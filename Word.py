@@ -1,15 +1,10 @@
 
 
 class Word:
-	word = ''
-	fam = False
-	cn_meaning = ''
-	meaning = ''
 
-	word_list = []
-
-	def __init__(self, word, cn_meaning, meaning):
+	def __init__(self, word, fam, cn_meaning, meaning):
 		self.word = word
+		self.fam = fam
 		self.cn_meaning = cn_meaning
 		self.meaning
 
