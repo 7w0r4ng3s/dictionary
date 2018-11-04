@@ -4,9 +4,10 @@ from httplib2 import Http
 from oauth2client import file, client, tools
 import pandas as pd
 
-# the info of the word list
-SPREADSHEET_ID = '101S-DEzHcZYNDw1VZ7NRXD2nkJQfq2TT_zvH9_1zcfU'
-RANGE_NAME = 'list_1'
+# # the info of the word list
+# SPREADSHEET_ID = '19Sk7PWxUS3wkK7WIsyAShRWzk0RNwbS4680e9CIn9C4'
+# # SPREADSHEET_ID = '101S-DEzHcZYNDw1VZ7NRXD2nkJQfq2TT_zvH9_1zcfU'
+# RANGE_NAME = 'list_2'
 
 def get_google_sheet(spreadsheet_id, range_name):
     """ Retrieve sheet data using OAuth credentials and Google Python API. """
