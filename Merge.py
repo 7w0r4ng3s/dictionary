@@ -1,4 +1,4 @@
-from get_sheet import * # the tool scraping data from Google Sheet
+from Sheet import * # the tool scraping data from Google Sheet
 import pandas as pd
 import glob
 import os
@@ -7,8 +7,12 @@ id_list = ['101S-DEzHcZYNDw1VZ7NRXD2nkJQfq2TT_zvH9_1zcfU', '19Sk7PWxUS3wkK7WIsyA
 range_list = ['list_1', 'list_2']
 
 def merge_list():
+	""" A function which merges all csv files in the folder and makes a list containing
+	all word lists"""
+
+	# User prompt begins
 	print('Options')
-	print('1 Add Google Sheet \n2 Merge List')
+	print('1 Add Google Sheet \n2 Merge List') # the user has two options
 	user_input = input('Type the number to proceed: ')
 
 	if user_input == '1':
@@ -20,21 +24,28 @@ def merge_list():
 
 	elif user_input == '2':
 		# prompt user the number of the target list
-		choice = int(input('Enter the number of the list you wish to merge into the database: \n'))
+		choice = int(input('Enter the number of the list you wish to merge into the database: '))
 
+		# because the previous 'id_list' and 'range_list' index starts from zero
 		SPREADSHEET_ID = id_list[choice - 1]
 		RANGE_NAME = range_list[choice - 1]
+
+		print()
 		print('---------- List Info ----------')
 		print('list_{}'.format(choice))
 		print('Spreadsheet ID:', SPREADSHEET_ID)
 		print('Sheet name:', RANGE_NAME)
 		print()
 		print('---------- Retrieving Word List ----------')
+		print('Merging list {}...'.format(choice))
 		print('Waiting...')
+
+		# get the target Google Sheet file and convert it into a pandas dataframe
 		gsheet = get_google_sheet(SPREADSHEET_ID, RANGE_NAME)
 		df = gsheet2df(gsheet)
 		print('{} words retrieved successfully!'.format(df.shape[0]))
 
+		# convert the data frame into a csv file
 		df.to_csv('csv/list_{}.csv'.format(choice), encoding='utf-8', index=False)
 
 		os.chdir('/Users/7w0r4ng3s/Desktop/Dictionary/csv')
