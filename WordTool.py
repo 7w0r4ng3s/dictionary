@@ -18,7 +18,7 @@ def search():
 		index = words.index(word)
 		print()
 		print(word + '\n')
-		print('Knew the word before: {}'.format(word_list[index][1]))
+		print('Knew the word before: {} (T means True and F means False)'.format(word_list[index][1]))
 		print('Chinese meaning: {}'.format(word_list[index][2]))
 		print('English meaning: {}'.format(word_list[index][3]))
 
